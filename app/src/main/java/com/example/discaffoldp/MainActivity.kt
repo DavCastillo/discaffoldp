@@ -1,6 +1,7 @@
 package com.example.discaffoldp
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -316,12 +317,7 @@ fun Content() {
                         enabled = true,
                         onClickLabel = "Clickable image",
                         onClick = {
-                            val webIntent = Intent(Intent.ACTION_VIEW).apply {
-                                data =
-                                    Uri.parse("https://www.linkedin.com/") // La URL que se quiere abrir
-                            }
-                            // Iniciar el intent para abrir el navegador
-                            context.startActivity(webIntent)
+                            imagenurl(context, "https://www.linkedin.com/")
                         }
                     )
             )
@@ -334,14 +330,8 @@ fun Content() {
                         enabled = true,
                         onClickLabel = "Clickable image",
                         onClick = {
-                            val webIntent = Intent(Intent.ACTION_VIEW).apply {
-                                data =
-                                    Uri.parse("https://github.com/DavCastillo") // La URL que se quiere abrir
-                            }
-                            // Iniciar el intent para abrir el navegador
-                            context.startActivity(webIntent)
-                        }
-                    )
+                            imagenurl(context, "https://github.com/DavCastillo")
+                        })
             )
             Image(
                 painter = painterResource(id = R.drawable.instagramlogo),
@@ -352,12 +342,7 @@ fun Content() {
                         enabled = true,
                         onClickLabel = "Clickable image",
                         onClick = {
-                            val webIntent = Intent(Intent.ACTION_VIEW).apply {
-                                data =
-                                    Uri.parse("https://www.instagram.com/?hl=es") // La URL que se quiere abrir
-                            }
-                            // Iniciar el intent para abrir el navegador
-                            context.startActivity(webIntent)
+                            imagenurl(context, "https://www.instagram.com/?hl=es")
                         }
                     )
             )
@@ -366,4 +351,13 @@ fun Content() {
 }
 
 
+fun imagenurl(context: Context, linkausar: String) {
+
+    val webIntent = Intent(Intent.ACTION_VIEW).apply {
+        data =
+            Uri.parse(linkausar) // La URL que se quiere abrir
+    }
+    // Iniciar el intent para abrir el navegador
+    context.startActivity(webIntent)
+}
 
